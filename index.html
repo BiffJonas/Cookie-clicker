@@ -1,0 +1,35 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Cookie Clicker</h1>
+    <ul>
+        <h5>Cookies Per Click: </h5>
+        <h5 id="counter-el">Cookies: </h5>
+        <h5 class="cps" id="cps-el" abbr="Cookies Per Second">CPS: </h5>
+    </ul>
+    <section id="buy-list">
+        <ul>
+            <li> <button onclick="getCursor()" id="cursor-el">Cursor</button> </li>
+            <li> <button>Grandma</button> </li>
+        </ul>
+    </section>
+    <div id="cookie" onclick="getCookie()">
+        <div class="chip" id="chip1"></div>
+        <div class="chip" id="chip2"></div>
+        <div class="chip" id="chip3"></div>
+        <div class="chip" id="chip4"></div>
+        <div class="chip" id="chip5"></div>
+        <div class="chip" id="chip6"></div>
+    </div>
+    <button id="upgrade-btn" onclick="upgrade()">Upgrade: 5</button>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
