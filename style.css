@@ -13,29 +13,31 @@ body {
     overflow-y: hidden;
 
 }
-h1{
+
+h1 {
     grid-column: 2;
     grid-row: 1;
 }
 
-#prestige-counter{
-    margin-top: 2em ;
+#prestige-counter {
+    margin-top: 2em;
     font-weight: 400;
     font-size: 1.8em;
 }
-h5{
+
+h5 {
     grid-column: 1;
     grid-row: 1;
 }
 
-#upgrade-btn{
+#upgrade-btn {
     position: relative;
     left: 37.5%;
     width: 25%;
     height: 50%;
     grid-row: 3;
     grid-column: 2;
-    border-radius: 5px ;
+    border-radius: 5px;
     border: none;
     box-shadow: none;
     background-color: goldenrod;
@@ -43,7 +45,7 @@ h5{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-#buy-list{
+#buy-list {
     position: relative;
     background-color: rgb(54, 51, 51);
     grid: 1;
@@ -52,34 +54,36 @@ h5{
 
 }
 
-ul{
+ul {
     padding: 0;
     margin: 0;
 }
 
 
-li{
+li {
     width: 100%;
     list-style: none;
     border: black 2px solid;
-    border-bottom: none ;
+    border-bottom: none;
 }
 
 #buy-list li:nth-child(2n) .upgrade {
     background-color: gray;
-  }
-li button{
+}
+
+
+li button {
     width: 100%;
     padding: 8px;
 }
 
 
 
-#prestige-el{
-    background-color:goldenrod;
-    color:black;
+#prestige-el {
+    background-color: goldenrod;
+    color: black;
     font-weight: bold;
-    border: 0.3em black ridge ;
+    border: 0.3em black ridge;
     box-sizing: border-box;
 }
 
