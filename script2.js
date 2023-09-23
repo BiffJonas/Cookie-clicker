@@ -17,6 +17,51 @@ let prestigeMultiplier = 1
 let prestigeCost = 1000000000000
 let prestigeAmount = 0;
 
+
+updateText()
+// refresh screen
+function updateText() {
+    let CPS = totalCPS(upgradeArray);
+    counterEl.textContent = `Cookies: ${cookie}`
+    cpsTrackerEl.textContent = `CPS: ${CPS * prestigeMultiplier}`
+    upgradeBtnEL.textContent = `Upgrade: ${cookieUpgradeCost}`
+    cookiesPerClickEl.textContent = `Cookies Per Click: ${cookiePerClick * prestigeMultiplier}`
+    prestigeEL.textContent = `PRESTIGE: ${prestigeCost}`
+    prestigeCounterEl.textContent = `Prestige: ${prestigeAmount}`
+}
+function addCookieEverySecond() {
+    let CPS = totalCPS(upgradeArray) * prestigeMultiplier;
+    cookie += CPS
+    updateText()
+}
+setInterval(addCookieEverySecond, 1000)
+
+//click cookie
+cookieEl.addEventListener("click", function () {
+    cookie += cookiePerClick * prestigeMultiplier
+    updateText()
+})
+
+// Handle upgrade events
+
+function incrementUpgrade(upgrade) {
+    if (upgrade.cost <= cookie) {
+        upgrade.amount++
+        cookie -= upgrade.cost
+        updateText()
+    }
+}
+
+upgradeBtnEL.addEventListener("click", function () {
+    if (cookieUpgradeCost <= cookie) {
+        cookie -= cookieUpgradeCost
+        cookiePerClick *= 2
+        cookieUpgradeCost *= 4
+        updateText()
+
+    }
+})
+
 prestigeEL.addEventListener("click", function() {
     if(cookie >= prestigeCost){
         prestigeMultiplier *= 2
@@ -32,65 +77,19 @@ prestigeEL.addEventListener("click", function() {
     }
 })
 
-
-updateText()
-// refresh screen
-function updateText() {
-    let CPS = totalCPS(upgradeArray);
-    counterEl.textContent = `Cookies: ${cookie}`
-    cpsTrackerEl.textContent = `CPS: ${CPS * prestigeMultiplier}`
-    upgradeBtnEL.textContent = `Upgrade: ${cookieUpgradeCost}`
-    cookiesPerClickEl.textContent = `Cookies Per Click: ${cookiePerClick * prestigeMultiplier}`
-    prestigeEL.textContent = `PRESTIGE: ${prestigeCost}`
-    prestigeCounterEl.textContent = `Prestige: ${prestigeAmount}`
-}
-function addCookieEverySecond(){
-    let CPS = totalCPS(upgradeArray) * prestigeMultiplier;
-    cookie += CPS 
-    updateText()
-}
-setInterval(addCookieEverySecond,1000)
-
-//click cookie
-cookieEl.addEventListener("click", function() {
-    cookie += cookiePerClick * prestigeMultiplier
-    updateText()
-})
-
-
-
-// Handle upgrade events
-
-function incrementUpgrade(upgrade) {
-    if (upgrade.cost <= cookie) {
-        upgrade.amount++
-        cookie -= upgrade.cost
-        updateText()
-    }
-}
-
-upgradeBtnEL.addEventListener("click", function() {
-    if (cookieUpgradeCost <= cookie){
-        cookie -= cookieUpgradeCost
-        cookiePerClick *= 2
-        cookieUpgradeCost *= 4
-        updateText()
-        
-    }
-})
-
 // calculate total cookies per second
 function totalCPS(list) {
     let totalCookiesPerSecond = 0;
-  
+
     for (const upg of list) {
         totalCookiesPerSecond += upg.amount * upg.cookiesPerSecond;
     }
-    
+
     return totalCookiesPerSecond;
 }
 
 
-/// TODO: 
+
+/// TODO:
 // Make upgrade cost dynamic
 // Make upgrades only show after previous upgrade has been bought atleast once
