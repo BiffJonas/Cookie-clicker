@@ -6,33 +6,54 @@ const anyUpgrade = document.querySelectorAll(".upgrade")
 const cpsTrackerEl = document.getElementById("cps-tracker")
 const upgradeBtnEL = document.getElementById("upgrade-btn")
 const cookiesPerClickEl = document.getElementById("cookies-per-click")
+const prestigeEL = document.getElementById("prestige-el")
+const prestigeCounterEl = document.getElementById("prestige-counter")
 
 let cookie = 0;
 let totalCookiesPerSecond = 0;
 let cookieUpgradeCost = 5;
 let cookiePerClick = 1;
+let prestigeMultiplier = 1
+let prestigeCost = 1000000000000
+let prestigeAmount = 0;
 
-let upgradeArray = [cursorUpgrade, grandmaUpgrade, bakeryUpgrade,];
+prestigeEL.addEventListener("click", function() {
+    if(cookie >= prestigeCost){
+        prestigeMultiplier *= 2
+        prestigeCost *= 10
+        prestigeAmount++
+        cookie = 0;
+        cookiePerClick = 1;
+        for(let i =0; i < upgradeArray.length; i++){
+            upgradeArray[i].amount = 0;
+        }
+        updateText()
+
+    }
+})
+
 
 updateText()
 // refresh screen
 function updateText() {
     let CPS = totalCPS(upgradeArray);
     counterEl.textContent = `Cookies: ${cookie}`
-    cpsTrackerEl.textContent = `CPS: ${CPS}`
+    cpsTrackerEl.textContent = `CPS: ${CPS * prestigeMultiplier}`
     upgradeBtnEL.textContent = `Upgrade: ${cookieUpgradeCost}`
-    cookiesPerClickEl.textContent = `Cookies Per Click: ${cookiePerClick}`
+    cookiesPerClickEl.textContent = `Cookies Per Click: ${cookiePerClick * prestigeMultiplier}`
+    prestigeEL.textContent = `PRESTIGE: ${prestigeCost}`
+    prestigeCounterEl.textContent = `Prestige: ${prestigeAmount}`
 }
 function addCookieEverySecond(){
-    let CPS = totalCPS(upgradeArray);
-    cookie += CPS
+    let CPS = totalCPS(upgradeArray) * prestigeMultiplier;
+    cookie += CPS 
     updateText()
 }
 setInterval(addCookieEverySecond,1000)
 
 //click cookie
 cookieEl.addEventListener("click", function() {
-    cookie += cookiePerClick
+    cookie += cookiePerClick * prestigeMultiplier
     updateText()
 })
 

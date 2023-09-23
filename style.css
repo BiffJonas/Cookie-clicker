@@ -2,7 +2,7 @@ body {
     display: grid;
     place-content: center;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr 1fr;
     background-image: url("rymd.jpg");
     background-size: cover;
     text-align: center;
@@ -10,10 +10,18 @@ body {
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     user-select: none;
+    overflow-y: hidden;
+
 }
 h1{
     grid-column: 2;
     grid-row: 1;
+}
+
+#prestige-counter{
+    margin-top: 2em ;
+    font-weight: 400;
+    font-size: 1.8em;
 }
 h5{
     grid-column: 1;
@@ -24,7 +32,7 @@ h5{
     position: relative;
     left: 37.5%;
     width: 25%;
-    height: 25%;
+    height: 50%;
     grid-row: 3;
     grid-column: 2;
     border-radius: 5px ;
@@ -37,13 +45,10 @@ h5{
 
 #buy-list{
     position: relative;
-    height: 100%;
-    width: 100%;
     background-color: rgb(54, 51, 51);
     grid: 1;
     grid-row: 2 / 4;
     border-collapse: collapse;
-
 
 }
 
@@ -52,18 +57,30 @@ ul{
     margin: 0;
 }
 
+
 li{
     width: 100%;
     list-style: none;
     border: black 2px solid;
     border-bottom: none ;
 }
+
+#buy-list li:nth-child(2n) .upgrade {
+    background-color: gray;
+  }
 li button{
     width: 100%;
+    padding: 8px;
 }
 
-li:last-of-type{
-    border: black 2px solid;
+
+
+#prestige-el{
+    background-color:goldenrod;
+    color:black;
+    font-weight: bold;
+    border: 0.3em black ridge ;
+    box-sizing: border-box;
 }
 
 #cookie {
@@ -119,30 +136,4 @@ li:last-of-type{
 #chip6 {
     position: relative;
     right: 30px;
-}
-
-@keyframes shake {
-    0% {
-        transform: scale(1);
-    }
-
-    25% {
-        transform: scale(0.95);
-    }
-
-    50% {
-        transform: scale(0.90);
-    }
-
-    75% {
-        transform: scale(0.95);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-.shake:hover {
-    animation: shake .1s linear 1;
 }
