@@ -41,6 +41,9 @@ function getCursor() {
 
 }
 
+function calculateCpsforCursor() {
+    
+}
 // const interval = setInterval(getCPS() {
 
 // }, 1000);

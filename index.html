@@ -10,17 +10,19 @@
 <body>
     <h1>Cookie Clicker</h1>
     <ul>
-        <h5>Cookies Per Click: </h5>
-        <h5 id="counter-el">Cookies: </h5>
-        <h5 class="cps" id="cps-el" abbr="Cookies Per Second">CPS: </h5>
+        <h5 id="cookies-per-click">Cookies Per Click: </h5>
+        <h5 id="counter-el">Cookies: 0</h5>
+        <h5 id="cps-tracker" id="cps-el" abbr="Cookies Per Second">CPS: 0</h5>
     </ul>
     <section id="buy-list">
         <ul>
-            <li> <button onclick="getCursor()" id="cursor-el">Cursor</button> </li>
-            <li> <button>Grandma</button> </li>
+            <li> <button onclick="incrementUpgrade(cursorUpgrade)" class="upgrade" id="cursor-el">Cursor: 10</button> </li>
+            <li> <button onclick="incrementUpgrade(grandmaUpgrade)" class="upgrade" id="grandma-el">Grandma: 100</button> </li>
+            <li> <button onclick="incrementUpgrade(bakeryUpgrade)" class="upgrade" id="bakery-el">Bakery: 1000</button> </li>
+            <li> <button onclick="incrementUpgrade(factoryUpgrade)" class="upgrade" id="factory-el">Cookie Factory: 10000</button> </li>
         </ul>
     </section>
-    <div id="cookie" onclick="getCookie()">
+    <div id="cookie">
         <div class="chip" id="chip1"></div>
         <div class="chip" id="chip2"></div>
         <div class="chip" id="chip3"></div>
@@ -29,7 +31,8 @@
         <div class="chip" id="chip6"></div>
     </div>
     <button id="upgrade-btn" onclick="upgrade()">Upgrade: 5</button>
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="upgrade.js"></script>
+    <script type="text/javascript" src="script2.js"></script>
 </body>
 
 </html>
