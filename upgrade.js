@@ -24,6 +24,7 @@ let upgradeArray = [
     cursorUpgrade,
     grandmaUpgrade,
     bakeryUpgrade,
+    farmUpgrade,
     mineUpgrade,
     factoryUpgrade,
     bankUpgrade,
